@@ -3567,6 +3567,24 @@ class Client(object):
         """
         return self._request_futures_api('get', 'ticker/leverageBracket', data=params)
 
+    def transfer_futures_to_spot(self, **params):
+        """Execute transfer from futures to spot account.
+
+        https://binance-docs.github.io/apidocs/futures/en/#new-future-account-transfer
+
+        """
+        params['type'] = 2
+        return self._request_margin_api('post', 'futures/transfer', signed=True, data=params)
+
+    def transfer_spot_to_futures(self, **params):
+        """Execute transfer from spot to futures account.
+
+        https://binance-docs.github.io/apidocs/futures/en/#new-future-account-transfer
+
+        """
+        params['type'] = 1
+        return self._request_margin_api('post', 'futures/transfer', signed=True, data=params)
+    
     def transfer_history(self, **params):
         """Get future account transaction history list
 
