@@ -1,5 +1,5 @@
 ================================
-Welcome to python-binance v0.7.5
+Welcome to python-binance v0.7.6
 ================================
 
 Note
@@ -73,7 +73,7 @@ Quick Start
 
 .. code:: bash
 
-    pip install python-binance
+    pip install python-binance-am11yfork
 
 
 .. code:: python
