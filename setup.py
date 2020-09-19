@@ -2,8 +2,8 @@
 from setuptools import setup
 
 setup(
-    name='python-binance',
-    version='0.7.5',
+    name='python-binance-am11yfork',
+    version='0.7.6',
     packages=['binance'],
     description='Binance REST API python implementation',
     url='https://github.com/sammchardy/python-binance',
