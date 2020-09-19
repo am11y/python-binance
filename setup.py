@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='python-binance-am11yfork',
-    version='0.7.6',
+    version='0.7.7',
     packages=['binance'],
     description='Binance REST API python implementation',
     url='https://github.com/sammchardy/python-binance',
