@@ -616,7 +616,7 @@ class Client(object):
         If last_id is specified, start with the trade after it. This is meant
         for updating a pre-existing local trade data cache.
 
-        Only allows start_str or last_id—not both. Not guaranteed to work
+        Only allows start_str or last_idâ€”not both. Not guaranteed to work
         right if you're running more than one of these simultaneously. You
         will probably hit your rate limit.
 
@@ -1692,9 +1692,7 @@ class Client(object):
 
     def cancel_all_orders(self, **params):
         """Cancel an active order. Either orderId or origClientOrderId must be sent.
-
         https://github.com/binance-exchange/binance-official-api-docs/blob/master/rest-api.md#cancel-order-trade
-
         :param symbol: required
         :type symbol: str
         :param orderId: The unique order id
@@ -1705,20 +1703,15 @@ class Client(object):
         :type newClientOrderId: str
         :param recvWindow: the number of milliseconds the request is valid for
         :type recvWindow: int
-
         :returns: API response
-
         .. code-block:: python
-
             {
                 "symbol": "LTCBTC",
                 "origClientOrderId": "myOrder1",
                 "orderId": 1,
                 "clientOrderId": "cancelMyOrder1"
             }
-
         :raises: BinanceRequestException, BinanceAPIException
-
         """
         return self._delete('openOrders', True, data=params)
 
@@ -1877,7 +1870,7 @@ class Client(object):
         .. code-block:: python
 
             {
-                "status": 0,        # 0: normal，1：system maintenance
+                "status": 0,        # 0: normalďĽŚ1ďĽšsystem maintenance
                 "msg": "normal"     # normal or System maintenance.
             }
 
@@ -2589,6 +2582,94 @@ class Client(object):
         params['type'] = 1
         return self._request_margin_api('post', 'margin/transfer', signed=True, data=params)
 
+    def get_margin_isolated_account(self, **params):
+        """Apply for a loan.
+
+        https://github.com/binance-exchange/binance-official-api-docs/blob/master/margin-api.md#margin-account-borrow-margin
+
+        :param asset: name of the asset
+        :type asset: str
+        :param amount: amount to transfer
+        :type amount: str
+        :param recvWindow: the number of milliseconds the request is valid for
+        :type recvWindow: int
+
+        .. code:: python
+
+            transaction = client.margin_create_loan(asset='BTC', amount='1.1')
+
+        :returns: API response
+
+        .. code-block:: python
+
+            {
+                "tranId": 100000001
+            }
+
+        :raises: BinanceRequestException, BinanceAPIException
+
+        """
+        return self._request_margin_api('get', 'margin/isolated/account', signed=True, data=params)
+    
+
+    def get_all_cross_margin_pairs(self, **params):
+        """Apply for a loan.
+
+        https://github.com/binance-exchange/binance-official-api-docs/blob/master/margin-api.md#margin-account-borrow-margin
+
+        :param asset: name of the asset
+        :type asset: str
+        :param amount: amount to transfer
+        :type amount: str
+        :param recvWindow: the number of milliseconds the request is valid for
+        :type recvWindow: int
+
+        .. code:: python
+
+            transaction = client.margin_create_loan(asset='BTC', amount='1.1')
+
+        :returns: API response
+
+        .. code-block:: python
+
+            {
+                "tranId": 100000001
+            }
+
+        :raises: BinanceRequestException, BinanceAPIException
+
+        """
+        return self._request_margin_api('get', 'margin/allPairs', signed=True, data=params)
+
+    def get_all_isolated_margin_pairs(self, **params):
+        """Apply for a loan.
+
+        https://github.com/binance-exchange/binance-official-api-docs/blob/master/margin-api.md#margin-account-borrow-margin
+
+        :param asset: name of the asset
+        :type asset: str
+        :param amount: amount to transfer
+        :type amount: str
+        :param recvWindow: the number of milliseconds the request is valid for
+        :type recvWindow: int
+
+        .. code:: python
+
+            transaction = client.margin_create_loan(asset='BTC', amount='1.1')
+
+        :returns: API response
+
+        .. code-block:: python
+
+            {
+                "tranId": 100000001
+            }
+
+        :raises: BinanceRequestException, BinanceAPIException
+
+        """
+        return self._request_margin_api('get', 'margin/isolated/allPairs', signed=True, data=params)
+    
     def create_margin_loan(self, **params):
         """Apply for a loan.
 
